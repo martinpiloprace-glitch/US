@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto z ulice - TravelQuick</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: linear-gradient(135deg, #141e30 0%, #243b55 100%); background-attachment: fixed; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; color: #fff; }
+        h1 { font-size: 2.6rem; text-align: center; margin-bottom: 5px; color: #00ffff; }
+        .tagline { font-size: 1.2rem; color: #ff007f; font-weight: bold; margin-bottom: 5px; text-align: center; }
+        .instruction { font-size: 1rem; color: #ccc; font-style: italic; margin-bottom: 30px; text-align: center; }
+        .back-link { display: block; text-decoration: none; color: #fff; font-size: 1.8rem; margin-bottom: 20px; font-weight: bold; width: 90%; max-width: 600px; text-align: left; }
+        .section-title { font-size: 1.4rem; color: #00ffff; width: 90%; max-width: 600px; margin: 25px 0 10px 0; border-bottom: 2px solid #00ffff; padding-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .phrase-card { background: #1f2d3d; padding: 25px; border-radius: 20px; margin-bottom: 15px; border-left: 12px solid #ff007f; box-shadow: 0 5px 15px rgba(0,0,0,0.3); width: 90%; max-width: 600px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.15s; }
+        .phrase-card strong { display: block; font-size: 1.6rem; text-align: center; color: #fff; }
+        .phrase-card p { text-align: center; color: #00ffff; font-size: 1.7rem; font-weight: bold; margin: 0; padding-top: 12px; margin-top: 12px; border-top: 1px dashed #444; width: 100%; display: none; }
+        .phrase-card:hover p, .phrase-card:active p { display: block; }
+        .speak-btn { margin-top: 15px; background: #ff007f; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255, 0, 127, 0.5); transition: transform 0.1s; }
+        .speak-btn:active { transform: scale(0.9); }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link" target="_top">← MENU</a>
+    <h1>AUTO 🚗</h1>
+    <div class="tagline">Půjčovny, benzínky a ovládání auta.</div>
+    <div class="instruction">Klikni pro americkou realitu, klepni na 🔊 pro poslech</div>
+
+    <div class="section-title">By the Book</div>
+    <div class="phrase-card"><strong>1. Kde si mohu pronajmout auto?</strong><p>Where can I rent a car?</p><button class="speak-btn" onclick="speakText('Where can I rent a car.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>2. Potřebuji plnou nádrž benzínu.</strong><p>I need a full tank of gas.</p><button class="speak-btn" onclick="speakText('I need a full tank of gas.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>3. Kde je nejbližší čerpací stanice?</strong><p>Where is the nearest gas station?</p><button class="speak-btn" onclick="speakText('Where is the nearest gas station.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>4. Mám defekt pneumatiky.</strong><p>I have a flat tire.</p><button class="speak-btn" onclick="speakText('I have a flat tire.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>5. Jaká je cena za den?</strong><p>What is the price per day?</p><button class="speak-btn" onclick="speakText('What is the price per day.', event)">🔊</button></div>
+
+    <div class="section-title">The Real Shit</div>
+    <div class="phrase-card"><strong>1. Kde si mohu pronajmout auto?</strong><p>Where's a car rental place?</p><button class="speak-btn" onclick="speakText('Wheres a car rental place?', event)">🔊</button></div>
+    <div class="phrase-card"><strong>2. Potřebuji plnou nádrž benzínu.</strong><p>Fill it up, please.</p><button class="speak-btn" onclick="speakText('Fill it up, please.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>3. Kde je nejbližší čerpací stanice?</strong><p>Any gas stations around here?</p><button class="speak-btn" onclick="speakText('Any gas stations around here?', event)">🔊</button></div>
+    <div class="phrase-card"><strong>4. Mám defekt pneumatiky.</strong><p>I got a flat.</p><button class="speak-btn" onclick="speakText('I got a flat.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>5. Jaká je cena za den?</strong><p>What's the daily rate?</p><button class="speak-btn" onclick="speakText('Whats the daily rate?', event)">🔊</button></div>
+
+    <script>
+        function speakText(text, event) {
+            event.stopPropagation();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                var utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+            } else { alert("Hlasový výstup není podporován."); }
+        }
+    </script>
+</body>
+</html>
