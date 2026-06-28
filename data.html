@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data & Wi-Fi - QuickSpeech ABC</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: linear-gradient(135deg, #141e30 0%, #243b55 100%); background-attachment: fixed; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; color: #fff; }
+        h1 { font-size: 2.6rem; text-align: center; margin-bottom: 5px; color: #00ffff; }
+        .tagline { font-size: 1.3rem; color: #ff007f; font-weight: bold; margin-bottom: 10px; text-align: center; border-top: 1px solid #333; border-bottom: 1px solid #333; padding: 10px; }
+        .instruction { font-size: 1rem; color: #ccc; font-style: italic; margin-bottom: 30px; text-align: center; }
+        .back-link { display: block; text-decoration: none; color: #fff; font-size: 1.8rem; margin-bottom: 20px; font-weight: bold; width: 90%; max-width: 600px; text-align: left; }
+        .section-title { font-size: 1.4rem; color: #00ffff; width: 90%; max-width: 600px; margin: 25px 0 10px 0; border-bottom: 2px solid #00ffff; padding-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .phrase-card { background: #1f2d3d; padding: 25px; border-radius: 20px; margin-bottom: 15px; border-left: 12px solid #ff007f; box-shadow: 0 5px 15px rgba(0,0,0,0.3); width: 90%; max-width: 600px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.15s; }
+        .phrase-card strong { display: block; font-size: 1.6rem; text-align: center; color: #fff; }
+        .phrase-card p { text-align: center; color: #00ffff; font-size: 1.7rem; font-weight: bold; margin: 0; padding-top: 12px; margin-top: 12px; border-top: 1px dashed #444; width: 100%; display: none; }
+        .phrase-card:hover p, .phrase-card:active p { display: block; }
+        .speak-btn { margin-top: 15px; background: #ff007f; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255, 0, 127, 0.5); transition: transform 0.1s; }
+        .speak-btn:active { transform: scale(0.9); }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link" target="_top">← MENU</a>
+    <h1>DATA & WI-FI 📶</h1>
+    <div class="tagline">🇺🇸 Authentic American Slang & Usage</div>
+    <div class="instruction">Klikni pro americkou realitu, klepni na 🔊 pro poslech</div>
+
+    <div class="section-title">By the Book</div>
+    <div class="phrase-card"><strong>1. Jaké je heslo k Wi-Fi?</strong><p>What is the Wi-Fi password?</p><button class="speak-btn" onclick="speakText('What is the Wi-Fi password?', event)">🔊</button></div>
+    <div class="phrase-card"><strong>2. Nemám signál.</strong><p>I do not have a signal.</p><button class="speak-btn" onclick="speakText('I do not have a signal.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>3. Můžu se připojit k internetu?</strong><p>Can I connect to the internet?</p><button class="speak-btn" onclick="speakText('Can I connect to the internet?', event)">🔊</button></div>
+    <div class="phrase-card"><strong>4. Mám nízký stav dat.</strong><p>I am low on data.</p><button class="speak-btn" onclick="speakText('I am low on data.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>5. Wi-Fi tu nefunguje.</strong><p>The Wi-Fi is not working here.</p><button class="speak-btn" onclick="speakText('The Wi-Fi is not working here.', event)">🔊</button></div>
+
+    <div class="section-title">The Real Shit</div>
+    <div class="phrase-card"><strong>1. Jaké je heslo k Wi-Fi?</strong><p>What's the Wi-Fi code?</p><button class="speak-btn" onclick="speakText('Whats the Wi-Fi code?', event)">🔊</button></div>
+    <div class="phrase-card"><strong>2. Nemám signál.</strong><p>I've got no bars.</p><button class="speak-btn" onclick="speakText('Ive got no bars.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>3. Můžu se připojit k internetu?</strong><p>Can I hop on the Wi-Fi?</p><button class="speak-btn" onclick="speakText('Can I hop on the Wi-Fi?', event)">🔊</button></div>
+    <div class="phrase-card"><strong>4. Mám nízký stav dat.</strong><p>I'm running low on data.</p><button class="speak-btn" onclick="speakText('Im running low on data.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>5. Wi-Fi tu nefunguje.</strong><p>The Wi-Fi is trash here.</p><button class="speak-btn" onclick="speakText('The Wi-Fi is trash here.', event)">🔊</button></div>
+
+    <script>
+        function speakText(text, event) {
+            event.stopPropagation();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                var utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+            } else { alert("Hlasový výstup není podporován."); }
+        }
+    </script>
+</body>
+</html>

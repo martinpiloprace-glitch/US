@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Disasters - QuickSpeech ABC</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: linear-gradient(135deg, #2b1055 0%, #7597de 100%); background-attachment: fixed; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; color: #fff; }
+        h1 { font-size: 2.6rem; text-align: center; margin-bottom: 5px; color: #ffcc00; }
+        .tagline { font-size: 1.3rem; color: #fff; font-weight: bold; margin-bottom: 10px; text-align: center; border-top: 1px solid #333; border-bottom: 1px solid #333; padding: 10px; }
+        .instruction { font-size: 1rem; color: #ddd; font-style: italic; margin-bottom: 30px; text-align: center; }
+        .back-link { display: block; text-decoration: none; color: #fff; font-size: 1.8rem; margin-bottom: 20px; font-weight: bold; width: 90%; max-width: 600px; text-align: left; }
+        .section-title { font-size: 1.4rem; color: #ffcc00; width: 90%; max-width: 600px; margin: 25px 0 10px 0; border-bottom: 2px solid #ffcc00; padding-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .phrase-card { background: #1f2d3d; padding: 25px; border-radius: 20px; margin-bottom: 15px; border-left: 12px solid #ff4500; box-shadow: 0 5px 15px rgba(0,0,0,0.3); width: 90%; max-width: 600px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.15s; }
+        .phrase-card strong { display: block; font-size: 1.6rem; text-align: center; color: #fff; }
+        .phrase-card p { text-align: center; color: #ff4500; font-size: 1.7rem; font-weight: bold; margin: 0; padding-top: 12px; margin-top: 12px; border-top: 1px dashed #444; width: 100%; display: none; }
+        .phrase-card:hover p, .phrase-card:active p { display: block; }
+        .speak-btn { margin-top: 15px; background: #ff4500; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255, 69, 0, 0.5); transition: transform 0.1s; }
+        .speak-btn:active { transform: scale(0.9); }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link" target="_top">← MENU</a>
+    <h1>NATURAL DISASTERS 🌪️</h1>
+    <div class="tagline">🇺🇸 Critical Situations & Warning</div>
+    <div class="instruction">Klikni pro americkou realitu, klepni na 🔊 pro poslech</div>
+
+    <div class="section-title">By the Book</div>
+    <div class="phrase-card"><strong>1. Blíží se bouře.</strong><p>A storm is coming.</p><button class="speak-btn" onclick="speakText('A storm is coming.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>2. Musíme se evakuovat.</strong><p>We must evacuate.</p><button class="speak-btn" onclick="speakText('We must evacuate.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>3. Hladina vody stoupá.</strong><p>The water level is rising.</p><button class="speak-btn" onclick="speakText('The water level is rising.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>4. Je to nebezpečná situace.</strong><p>This is a dangerous situation.</p><button class="speak-btn" onclick="speakText('This is a dangerous situation.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>5. Máte baterku?</strong><p>Do you have a flashlight?</p><button class="speak-btn" onclick="speakText('Do you have a flashlight?', event)">🔊</button></div>
+
+    <div class="section-title">The Real Shit</div>
+    <div class="phrase-card"><strong>1. Blíží se bouře.</strong><p>There's a storm brewing.</p><button class="speak-btn" onclick="speakText('Theres a storm brewing.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>2. Musíme se evakuovat.</strong><p>We need to get out of here.</p><button class="speak-btn" onclick="speakText('We need to get out of here.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>3. Hladina vody stoupá.</strong><p>The water is rising fast.</p><button class="speak-btn" onclick="speakText('The water is rising fast.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>4. Je to nebezpečná situace.</strong><p>This is life-threatening.</p><button class="speak-btn" onclick="speakText('This is life-threatening.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>5. Máte baterku?</strong><p>Got a flashlight?</p><button class="speak-btn" onclick="speakText('Got a flashlight?', event)">🔊</button></div>
+
+    <script>
+        function speakText(text, event) {
+            event.stopPropagation();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                var utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+            } else { alert("Hlasový výstup není podporován."); }
+        }
+    </script>
+</body>
+</html>

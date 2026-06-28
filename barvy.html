@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barvy - TravelQuick</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: linear-gradient(135deg, #141e30 0%, #243b55 100%); background-attachment: fixed; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; color: #fff; }
+        h1 { font-size: 2.6rem; text-align: center; margin-bottom: 5px; color: #00ffff; }
+        .tagline { font-size: 1.2rem; color: #ff007f; font-weight: bold; margin-bottom: 5px; text-align: center; }
+        .instruction { font-size: 1rem; color: #ccc; font-style: italic; margin-bottom: 30px; text-align: center; }
+        .back-link { display: block; text-decoration: none; color: #fff; font-size: 1.8rem; margin-bottom: 20px; font-weight: bold; width: 90%; max-width: 600px; text-align: left; }
+        .section-title { font-size: 1.4rem; color: #00ffff; width: 90%; max-width: 600px; margin: 25px 0 10px 0; border-bottom: 2px solid #00ffff; padding-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .phrase-card { background: #1f2d3d; padding: 25px; border-radius: 20px; margin-bottom: 15px; border-left: 12px solid #ff007f; box-shadow: 0 5px 15px rgba(0,0,0,0.3); width: 90%; max-width: 600px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.15s; }
+        .phrase-card strong { display: block; font-size: 1.6rem; text-align: center; color: #fff; }
+        .phrase-card p { text-align: center; color: #00ffff; font-size: 1.7rem; font-weight: bold; margin: 0; padding-top: 12px; margin-top: 12px; border-top: 1px dashed #444; width: 100%; display: none; }
+        .phrase-card:hover p, .phrase-card:active p { display: block; }
+        .speak-btn { margin-top: 15px; background: #ff007f; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255, 0, 127, 0.5); transition: transform 0.1s; }
+        .speak-btn:active { transform: scale(0.9); }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link" target="_top">← MENU</a>
+    <h1>BARVY 🎨</h1>
+    <div class="tagline">Barvy, odstíny a popisování věcí.</div>
+    <div class="instruction">Klikni pro americkou realitu, klepni na 🔊 pro poslech</div>
+
+    <div class="section-title">By the Book</div>
+    <div class="phrase-card"><strong>1. To tričko je světle modré.</strong><p>That t-shirt is light blue.</p><button class="speak-btn" onclick="speakText('That t-shirt is light blue.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>2. Mám rád tmavě zelenou barvu.</strong><p>I like the dark green color.</p><button class="speak-btn" onclick="speakText('I like the dark green color.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>3. Hledám něco v černé barvě.</strong><p>I am looking for something in black.</p><button class="speak-btn" onclick="speakText('I am looking for something in black.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>4. Je to jasně červené.</strong><p>It is bright red.</p><button class="speak-btn" onclick="speakText('It is bright red.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>5. Máte to ve zlaté?</strong><p>Do you have it in gold?</p><button class="speak-btn" onclick="speakText('Do you have it in gold?', event)">🔊</button></div>
+
+    <div class="section-title">The Real Shit</div>
+    <div class="phrase-card"><strong>1. To tričko je světle modré.</strong><p>That shirt is baby blue.</p><button class="speak-btn" onclick="speakText('That shirt is baby blue.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>2. Mám rád tmavě zelenou barvu.</strong><p>I'm into forest green.</p><button class="speak-btn" onclick="speakText('Im into forest green.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>3. Hledám něco v černé barvě.</strong><p>Looking for something in pitch black.</p><button class="speak-btn" onclick="speakText('Looking for something in pitch black.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>4. Je to jasně červené.</strong><p>That's fire engine red.</p><button class="speak-btn" onclick="speakText('Thats fire engine red.', event)">🔊</button></div>
+    <div class="phrase-card"><strong>5. Máte to ve zlaté?</strong><p>Got this in gold?</p><button class="speak-btn" onclick="speakText('Got this in gold?', event)">🔊</button></div>
+
+    <script>
+        function speakText(text, event) {
+            event.stopPropagation();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                var utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+            } else { alert("Hlasový výstup není podporován."); }
+        }
+    </script>
+</body>
+</html>
